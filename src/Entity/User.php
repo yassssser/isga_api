@@ -15,37 +15,37 @@ class User implements UserInterface
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $nom;
+    protected $nom;
 
     /**
      * @ORM\Column(type="string", length=30)
      */
-    private $prenom;
+    protected $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $role;
+    protected $role;
 
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $email;
+    protected $email;
 
     /**
      * @ORM\Column(type="string", length=20)
      */
-    private $password;
+    protected $password;
 
     /**
      * @ORM\Column(type="string", length=20)
      */
-    private $tel;
+    protected $tel;
 
     public function getId(): ?int
     {

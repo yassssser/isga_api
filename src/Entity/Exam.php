@@ -55,8 +55,6 @@ class Exam
      */
     private $etudiant;
 
-
-
     public function getId(): ?int
     {
         return $this->id;

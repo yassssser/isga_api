@@ -14,34 +14,27 @@ use Doctrine\ORM\Mapping as ORM;
 class Administrateur extends User
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Etudiant", mappedBy="administrateur" ,cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Etudiant", mappedBy="administrateur")
      */
     private $etudiants;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Classe", mappedBy="administrateur" ,cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Classe", mappedBy="administrateur")
      */
     private $classes;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Matiere", mappedBy="administrateur" ,cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Matiere", mappedBy="administrateur")
      */
     private $matieres;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Absence", mappedBy="administrateur" ,cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Absence", mappedBy="administrateur")
      */
     private $absences;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Exam", mappedBy="administrateur" ,cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Exam", mappedBy="administrateur")
      */
     private $exams;
 

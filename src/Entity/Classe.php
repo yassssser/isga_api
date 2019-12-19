@@ -41,12 +41,12 @@ class Classe
     private $emploi;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Etudiant", mappedBy="classe" ,cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Etudiant", mappedBy="classe" )
      */
     private $etudiants;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Matiere", mappedBy="classe" ,cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Matiere", mappedBy="classe" )
      */
     private $matieres;
     

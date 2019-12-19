@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass="App\Repository\EtudiantRepository")
+ * @ORM\Table(name="etudiant")
  */
 class Etudiant extends User
 {
@@ -18,8 +19,8 @@ class Etudiant extends User
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
- 
+    protected $id;
+
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -36,12 +37,12 @@ class Etudiant extends User
     private $classe;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Absence", mappedBy="etudiant" ,cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Absence", mappedBy="etudiant" )
      */
     private $absences;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Exam", mappedBy="etudiant" ,cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Exam", mappedBy="etudiant" )
      */
     private $exams;
 

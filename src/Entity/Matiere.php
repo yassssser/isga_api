@@ -119,7 +119,7 @@ class Matiere
         return $this;
     }
 
-    public function getClasse(): ?self
+    public function getClasse(): ?Classe
     {
         return $this->classe;
     }

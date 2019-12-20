@@ -1,12 +1,13 @@
 security:
     encoders:
-        App\Entity\User : bcrypt
+        App\Entity\Etudiant : bcrypt
+        App\Entity\Administrateur : bcrypt
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         #in_memory: { memory: null }
         database:
             entity:
-                class: App\Entity\User
+                class: App\Entity\Etudiant
                 property: email
     firewalls:
         dev:

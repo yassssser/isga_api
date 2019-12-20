@@ -101,7 +101,7 @@ class AppFixtures extends Fixture
             $etd->setTel("0666666666");
             $etd->setEmail("etudiant$i@isga.ma");
             $etd->setCodeEtd("E111$i");
-            $etd->setPassword($this->passwordEncoder->encodePassword($etd , 'sercet123'));
+            $etd->setPassword($this->passwordEncoder->encodePassword($etd , 'password123'));
             $etd->setRole("Etudiant");
 
             $admin = $this->getReference("admin_".rand(0,9));

@@ -6,13 +6,14 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+
 
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass="App\Repository\EtudiantRepository")
- * @ORM\Table(name="etudiant")
  */
-class Etudiant extends User
+class Etudiant implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -20,6 +21,36 @@ class Etudiant extends User
      * @ORM\Column(type="integer")
      */
     protected $id;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    protected $nom;
+
+    /**
+     * @ORM\Column(type="string", length=30)
+     */
+    protected $prenom;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $role;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    protected $email;
+
+    /**
+     * @ORM\Column(type="string", length=20)
+     */
+    protected $password;
+
+    /**
+     * @ORM\Column(type="string", length=20)
+     */
+    protected $tel;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -57,6 +88,78 @@ class Etudiant extends User
         return $this->id;
     }
 
+    
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(string $prenom): self
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getRole(): ?string
+    {
+        return $this->role;
+    }
+
+    public function setRole(string $role): self
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    public function getTel(): ?string
+    {
+        return $this->tel;
+    }
+
+    public function setTel(string $tel): self
+    {
+        $this->tel = $tel;
+
+        return $this;
+    }
  
     public function getCodeEtd(): ?string
     {
@@ -161,5 +264,54 @@ class Etudiant extends User
     public function __toString()
     {
         return $this->getNom();
+    }
+
+    
+    /**
+     * Returns the roles granted to the user.
+     *
+     *     public function getRoles()
+     *     {
+     *         return ['ROLE_USER'];
+     *     }
+     *
+     * Alternatively, the roles might be stored on a ``roles`` property,
+     * and populated in any number of different ways when the user object
+     * is created.
+     *
+     * @return string[] The user roles
+     */
+    public function getRoles(){
+        return ['ROLE_USER'];
+    }
+
+    /**
+     * Returns the salt that was originally used to encode the password.
+     *
+     * This can return null if the password was not encoded using a salt.
+     *
+     * @return string|null The salt
+     */
+    public function getSalt(){
+        return null;
+    }
+
+    /**
+     * Removes sensitive data from the user.
+     *
+     * This is important if, at any given point, sensitive information like
+     * the plain-text password is stored on this object.
+     */
+    public function eraseCredentials(){
+
+    }
+
+    /**
+     * Returns the username used to authenticate the user.
+     *
+     * @return string The username
+     */
+    public function getUsername(){
+        return $this->email;
     }
 }

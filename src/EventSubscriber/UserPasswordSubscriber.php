@@ -3,7 +3,8 @@
 namespace App\EventSubscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
-use App\Entity\User;
+use App\Entity\Administrateur;
+use App\Entity\Etudiant;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
@@ -23,7 +24,7 @@ class UserPasswordSubscriber implements EventSubscriberInterface
         $entity = $event->getControllerResult();
         $method = $event->getRequest()->getMethod();
 
-        if ($entity instanceof User && $method == Request::METHOD_POST){
+        if ( ( $entity instanceof Etudiant || $entity instanceof Administrateur ) && $method == Request::METHOD_POST){
             $entity->setPassword($this->passwordEncoder->encodePassword(
                 $entity,
                 $entity->getPassword()

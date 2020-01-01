@@ -6,9 +6,19 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiSubresource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *  itemOperations={
+ *      "GET"={
+ *        "normalization_context"={
+ *          "groups"={"get-classe-with-etd"}
+ *         }
+ *      }
+ * }
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\ClasseRepository")
  */
 class Classe
@@ -17,36 +27,45 @@ class Classe
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"get-classe-with-etd"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=10)
+     * @Groups({"get-classe-with-etd"})
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Groups({"get-classe-with-etd"})
      */
     private $filiere;
 
     /**
      * @ORM\Column(type="string", length=30)
+     * @Groups({"get-classe-with-etd"})
      */
     private $promotion;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"get-classe-with-etd"})
      */
     private $emploi;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Etudiant", mappedBy="classe" )
+     * @ORM\OneToMany(targetEntity="App\Entity\Etudiant", mappedBy="classe" , orphanRemoval=true)
+     * @Groups({"get-classe-with-etd"})
+     * @ApiSubresource()
      */
     private $etudiants;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Matiere", mappedBy="classe" )
+     * @ORM\OneToMany(targetEntity="App\Entity\Matiere", mappedBy="classe" , orphanRemoval=true)
+     * @Groups({"get-classe-with-etd"})
+     * @ApiSubresource()
      */
     private $matieres;
     

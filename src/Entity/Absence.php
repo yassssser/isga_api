@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 
 /**
  * @ApiResource()
@@ -15,21 +17,25 @@ class Absence
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"get-etd-with-exam"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"get-etd-with-exam"})
      */
     private $date;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"get-etd-with-exam"})
      */
     private $justification;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups({"get-etd-with-exam"})
      */
     private $nbr_heure;
 
@@ -40,6 +46,7 @@ class Absence
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Matiere", inversedBy="absences")
+     * @Groups({"get-etd-with-exam"})
      */
     private $matiere;
 

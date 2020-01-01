@@ -7,10 +7,19 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
-
+use ApiPlatform\Core\Annotation\ApiSubresource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ * itemOperations={
+ *      "GET"={
+ *        "normalization_context"={
+ *          "groups"={"get-etd-with-exam"}
+ *         }
+ *      }
+ * }
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\EtudiantRepository")
  */
 class Etudiant implements UserInterface
@@ -19,41 +28,48 @@ class Etudiant implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     *  @Groups({"get-etd-with-exam" , "get-classe-with-etd" ,"get-matiere-with-exam"})
      */
     protected $id;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Groups({"get-etd-with-exam" , "get-classe-with-etd" ,"get-matiere-with-exam"})
      */
     protected $nom;
 
     /**
      * @ORM\Column(type="string", length=30)
+     * @Groups({"get-etd-with-exam" , "get-classe-with-etd" ,"get-matiere-with-exam"})
      */
     protected $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"get-etd-with-exam" , "get-classe-with-etd" ,"get-matiere-with-exam"})
      */
     protected $role;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Groups({"get-etd-with-exam" , "get-classe-with-etd" ,"get-matiere-with-exam"})
      */
     protected $email;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=255)
      */
     protected $password;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Groups({"get-etd-with-exam"})
      */
     protected $tel;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"get-etd-with-exam" , "get-classe-with-etd" ,"get-matiere-with-exam"})
      */
     private $code_etd;
 
@@ -68,12 +84,16 @@ class Etudiant implements UserInterface
     private $classe;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Absence", mappedBy="etudiant" )
+     * @ORM\OneToMany(targetEntity="App\Entity\Absence", mappedBy="etudiant" , orphanRemoval=true)
+     * @Groups({"get-etd-with-exam"})
+     *  @ApiSubresource()
      */
     private $absences;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Exam", mappedBy="etudiant" )
+     * @ORM\OneToMany(targetEntity="App\Entity\Exam", mappedBy="etudiant" , orphanRemoval=true)
+     * @Groups({"get-etd-with-exam"})
+     * @ApiSubresource()
      */
     private $exams;
 

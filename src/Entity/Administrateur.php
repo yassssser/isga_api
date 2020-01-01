@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 
 /**
  * @ApiResource()
@@ -43,7 +44,7 @@ class Administrateur implements UserInterface //extends User
     protected $email;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=255)
      */
     protected $password;
 
@@ -53,27 +54,31 @@ class Administrateur implements UserInterface //extends User
     protected $tel;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Etudiant", mappedBy="administrateur")
+     * @ORM\OneToMany(targetEntity="App\Entity\Etudiant", mappedBy="administrateur" , orphanRemoval=true)
+     * @ApiSubresource()
      */
     private $etudiants;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Classe", mappedBy="administrateur")
+     * @ORM\OneToMany(targetEntity="App\Entity\Classe", mappedBy="administrateur" , orphanRemoval=true)
+     * @ApiSubresource()
      */
     private $classes;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Matiere", mappedBy="administrateur")
+     * @ORM\OneToMany(targetEntity="App\Entity\Matiere", mappedBy="administrateur" , orphanRemoval=true)
+     * @ApiSubresource()
      */
     private $matieres;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Absence", mappedBy="administrateur")
+     * @ORM\OneToMany(targetEntity="App\Entity\Absence", mappedBy="administrateur" , orphanRemoval=true)
+     * @ApiSubresource()
      */
     private $absences;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Exam", mappedBy="administrateur")
+     * @ORM\OneToMany(targetEntity="App\Entity\Exam", mappedBy="administrateur" , orphanRemoval=true)
      */
     private $exams;
 

@@ -6,6 +6,9 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiSubresource;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * @ApiResource()
@@ -17,26 +20,31 @@ class Matiere
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"get-classe-with-etd", "get-matiere-with-exam" , "get-etd-with-exam"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Groups({"get-classe-with-etd" ,"get-matiere-with-exam", "get-etd-with-exam" })
      */
     private $nom;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups({"get-classe-with-etd" ,"get-matiere-with-exam" , "get-etd-with-exam"})
      */
     private $nbr_heure;
 
     /**
      * @ORM\Column(type="string", length=10)
+     * @Groups({"get-classe-with-etd" ,"get-matiere-with-exam" , "get-etd-with-exam"})
      */
     private $salle;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"get-classe-with-etd" ,"get-matiere-with-exam" , "get-etd-with-exam"})
      */
     private $date;
 
@@ -51,15 +59,17 @@ class Matiere
     private $administrateur;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Absence", mappedBy="matiere" ,cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Absence", mappedBy="matiere" , orphanRemoval=true)
+     * @ApiSubresource()
      */
     private $absences;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Exam", mappedBy="matiere" ,cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Exam", mappedBy="matiere"  , orphanRemoval=true)
+     * @ApiSubresource()
      */
     private $exams;
-
+ // cascade={"remove"}
     public function __construct()
     {
         $this->absences = new ArrayCollection();

@@ -42,11 +42,11 @@ class AppFixtures extends Fixture
     public function loadAdministrateur(ObjectManager $manager){
         for($i=0 ; $i<10 ; $i++){
             $admin = new Administrateur();
-            $admin->setNom("nom_admin_$i");
-            $admin->setPrenom("prenom_admin_$i");
+            $admin->setNom($this->faker->lastName);
+            $admin->setPrenom($this->faker->firstName);
             $admin->setPassword($this->passwordEncoder->encodePassword($admin , 'sercet123'));
-            $admin->setEmail("admin$i@isga.ma");
-            $admin->setTel("0666666666");
+            $admin->setEmail($this->faker->email);
+            $admin->setTel($this->faker->phoneNumber);
             $admin->setRole("Admin");
 
             $this->addReference("admin_$i", $admin);
@@ -96,11 +96,11 @@ class AppFixtures extends Fixture
     public function loadEtudiant(ObjectManager $manager){
         for($i=0 ; $i<10 ; $i++){
             $etd = new Etudiant();
-            $etd->setNom("nom_etudiant_$i");
-            $etd->setPrenom("prenom_etudiant_$i");
-            $etd->setTel("0666666666");
-            $etd->setEmail("etudiant$i@isga.ma");
-            $etd->setCodeEtd("E111$i");
+            $etd->setNom($this->faker->lastName);
+            $etd->setPrenom($this->faker->firstName);
+            $etd->setTel($this->faker->phoneNumber);
+            $etd->setEmail($this->faker->email);
+            $etd->setCodeEtd($this->faker->ean8);
             $etd->setPassword($this->passwordEncoder->encodePassword($etd , 'password123'));
             $etd->setRole("Etudiant");
 
@@ -123,7 +123,7 @@ class AppFixtures extends Fixture
             $exam->setNom("DM$i");
             $exam->setDate(new \DateTime());
             $exam->setNote(rand(5,20));
-            $exam->setValidation(true);
+            $exam->setValidation($this->faker->boolean);
             
             $admin = $this->getReference("admin_".rand(0,9));
             $matiere = $this->getReference("matiere_".rand(0,9));
@@ -143,8 +143,8 @@ class AppFixtures extends Fixture
             $abs = new Absence();
 
             $abs->setDate(new \DateTime());
-            $abs->setJustification(false);
-            $abs->setNbrHeure(9);
+            $abs->setJustification($this->faker->boolean);
+            $abs->setNbrHeure(rand(0,20));
 
             $admin = $this->getReference("admin_".rand(0,9));
             $matiere = $this->getReference("matiere_".rand(0,9));

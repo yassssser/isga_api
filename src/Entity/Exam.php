@@ -6,9 +6,19 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *  *  itemOperations={
+ *      "GET"={
+ *        "normalization_context"={
+ *          "groups"={"get-matiere-with-exam"}
+ *         }
+ *      }
+ * }
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\ExamRepository")
  */
 class Exam
@@ -17,31 +27,37 @@ class Exam
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"get-etd-with-exam" , "get-matiere-with-exam"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"get-etd-with-exam" , "get-matiere-with-exam"})
      */
     private $date;
 
     /**
      * @ORM\Column(type="float", nullable=true)
+     * @Groups({"get-etd-with-exam" , "get-matiere-with-exam"})
      */
     private $note;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
+     * @Groups({"get-etd-with-exam" , "get-matiere-with-exam"})
      */
     private $validation;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"get-etd-with-exam" , "get-matiere-with-exam"})
      */
     private $nom;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Matiere", inversedBy="exams")
+     * @Groups({"get-matiere-with-exam"})
      */
     private $matiere;
 
@@ -52,6 +68,7 @@ class Exam
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Etudiant", inversedBy="exams")
+     * @Groups({"get-matiere-with-exam"})
      */
     private $etudiant;
 
@@ -94,14 +111,6 @@ class Exam
         $this->validation = $validation;
 
         return $this;
-    }
-
-    /**
-     * @return Collection|Etudiant[]
-     */
-    public function getEtudiants(): Collection
-    {
-        return $this->etudiants;
     }
 
 

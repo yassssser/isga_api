@@ -16,6 +16,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *      "GET"={
  *        "normalization_context"={
  *          "groups"={"get-etd-with-exam"}
+ * 
  *         }
  *      }
  * }
@@ -28,31 +29,31 @@ class Etudiant implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     *  @Groups({"get-etd-with-exam" , "get-classe-with-etd" ,"get-matiere-with-exam"})
+     *  @Groups({"get-etd-with-exam" })
      */
     protected $id;
 
     /**
      * @ORM\Column(type="string", length=50)
-     * @Groups({"get-etd-with-exam" , "get-classe-with-etd" ,"get-matiere-with-exam"})
+     * @Groups({"get-etd-with-exam"})
      */
     protected $nom;
 
     /**
      * @ORM\Column(type="string", length=30)
-     * @Groups({"get-etd-with-exam" , "get-classe-with-etd" ,"get-matiere-with-exam"})
+     * @Groups({"get-etd-with-exam"})
      */
     protected $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"get-etd-with-exam" , "get-classe-with-etd" ,"get-matiere-with-exam"})
+     * @Groups({"get-etd-with-exam" })
      */
     protected $role;
 
     /**
      * @ORM\Column(type="string", length=50)
-     * @Groups({"get-etd-with-exam" , "get-classe-with-etd" ,"get-matiere-with-exam"})
+     * @Groups({"get-etd-with-exam"})
      */
     protected $email;
 
@@ -69,7 +70,7 @@ class Etudiant implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"get-etd-with-exam" , "get-classe-with-etd" ,"get-matiere-with-exam"})
+     * @Groups({"get-etd-with-exam" })
      */
     private $code_etd;
 
@@ -80,20 +81,21 @@ class Etudiant implements UserInterface
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Classe", inversedBy="etudiants")
+     * 
      */
     private $classe;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Absence", mappedBy="etudiant" , orphanRemoval=true)
-     * @Groups({"get-etd-with-exam"})
      *  @ApiSubresource()
+     *  @Groups({"get-etd-with-exam" })
      */
     private $absences;
-
+ 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Exam", mappedBy="etudiant" , orphanRemoval=true)
-     * @Groups({"get-etd-with-exam"})
      * @ApiSubresource()
+     * @Groups({"get-etd-with-exam" })
      */
     private $exams;
 
@@ -332,6 +334,6 @@ class Etudiant implements UserInterface
      * @return string The username
      */
     public function getUsername(){
-        return $this->email;
+        return $this->code_etd;
     }
 }

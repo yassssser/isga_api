@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  sam. 21 déc. 2019 à 01:33
+-- Généré le :  ven. 10 jan. 2020 à 20:47
 -- Version du serveur :  10.1.36-MariaDB
 -- Version de PHP :  7.2.10
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `absence` (
   `id` int(11) NOT NULL,
-  `date` datetime NOT NULL,
+  `date` date NOT NULL,
   `justification` tinyint(1) NOT NULL,
   `nbr_heure` double NOT NULL,
   `etudiant_id` int(11) DEFAULT NULL,
@@ -43,16 +43,16 @@ CREATE TABLE `absence` (
 --
 
 INSERT INTO `absence` (`id`, `date`, `justification`, `nbr_heure`, `etudiant_id`, `matiere_id`, `administrateur_id`) VALUES
-(61, '2019-12-21 01:26:34', 0, 9, 65, 69, 125),
-(62, '2019-12-21 01:26:34', 0, 9, 72, 67, 125),
-(63, '2019-12-21 01:26:34', 0, 9, 66, 66, 129),
-(64, '2019-12-21 01:26:34', 0, 9, 64, 64, 126),
-(65, '2019-12-21 01:26:34', 0, 9, 66, 69, 123),
-(66, '2019-12-21 01:26:34', 0, 9, 72, 69, 128),
-(67, '2019-12-21 01:26:34', 0, 9, 67, 66, 126),
-(68, '2019-12-21 01:26:34', 0, 9, 71, 65, 128),
-(69, '2019-12-21 01:26:34', 0, 9, 66, 71, 127),
-(70, '2019-12-21 01:26:34', 0, 9, 67, 69, 127);
+(142, '2020-01-10', 1, 5, 154, 164, 221),
+(143, '2020-01-10', 1, 9, 154, 169, 221),
+(144, '2020-01-10', 0, 4, 157, 162, 221),
+(145, '2020-01-10', 1, 17, 160, 171, 230),
+(146, '2020-01-10', 0, 13, 158, 168, 228),
+(147, '2020-01-10', 1, 6, 155, 169, 228),
+(148, '2020-01-10', 1, 16, 154, 171, 225),
+(149, '2020-01-10', 1, 0, 162, 167, 222),
+(150, '2020-01-10', 1, 2, 153, 162, 225),
+(151, '2020-01-10', 0, 10, 158, 169, 228);
 
 -- --------------------------------------------------------
 
@@ -64,7 +64,7 @@ CREATE TABLE `administrateur` (
   `id` int(11) NOT NULL,
   `nom` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `prenom` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tel` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `role` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
@@ -75,16 +75,16 @@ CREATE TABLE `administrateur` (
 --
 
 INSERT INTO `administrateur` (`id`, `nom`, `prenom`, `password`, `email`, `tel`, `role`) VALUES
-(121, 'nom_admin_0', 'prenom_admin_0', 'ZGmNc9GH/dV+bpyhale+', 'admin0@isga.ma', '0666666666', 'Admin'),
-(122, 'nom_admin_1', 'prenom_admin_1', 'ZGmNc9GH/dV+bpyhale+', 'admin1@isga.ma', '0666666666', 'Admin'),
-(123, 'nom_admin_2', 'prenom_admin_2', 'ZGmNc9GH/dV+bpyhale+', 'admin2@isga.ma', '0666666666', 'Admin'),
-(124, 'nom_admin_3', 'prenom_admin_3', 'ZGmNc9GH/dV+bpyhale+', 'admin3@isga.ma', '0666666666', 'Admin'),
-(125, 'nom_admin_4', 'prenom_admin_4', 'ZGmNc9GH/dV+bpyhale+', 'admin4@isga.ma', '0666666666', 'Admin'),
-(126, 'nom_admin_5', 'prenom_admin_5', 'ZGmNc9GH/dV+bpyhale+', 'admin5@isga.ma', '0666666666', 'Admin'),
-(127, 'nom_admin_6', 'prenom_admin_6', 'ZGmNc9GH/dV+bpyhale+', 'admin6@isga.ma', '0666666666', 'Admin'),
-(128, 'nom_admin_7', 'prenom_admin_7', 'ZGmNc9GH/dV+bpyhale+', 'admin7@isga.ma', '0666666666', 'Admin'),
-(129, 'nom_admin_8', 'prenom_admin_8', 'ZGmNc9GH/dV+bpyhale+', 'admin8@isga.ma', '0666666666', 'Admin'),
-(130, 'nom_admin_9', 'prenom_admin_9', 'ZGmNc9GH/dV+bpyhale+', 'admin9@isga.ma', '0666666666', 'Admin');
+(221, 'Swaniawski', 'Gilda', '$2y$13$hvWynTbkhOyCrdP9Zea00.hSALDxrAzOBnABLC9bTDdCRQGBPvdAG', 'bo.bruen@yahoo.com', '508-870-0340 x358', 'Admin'),
+(222, 'Mosciski', 'Syble', '$2y$13$MIZzRCzmF6U7rTWihDkCtu7EnY8QzEzphT.gSmZXCJ1lK1mxoDpyi', 'hhackett@gmail.com', '+1 (763) 546-1829', 'Admin'),
+(223, 'Stamm', 'Kyle', '$2y$13$nYnpvSDvnxD5ZA4e1j/i/eWWzyGPY.XEwEV.BpK9BaPGMIkNiiZbG', 'ypfeffer@gmail.com', '(921) 712-0015', 'Admin'),
+(224, 'Robel', 'Tessie', '$2y$13$Eu1he1.uqpiqpJh3GHqoBuVJjRP2g97uTFBBHfLdAsUSK8/C9fdY.', 'thompson.dangelo@koepp.com', '464-310-5253 x36696', 'Admin'),
+(225, 'Beahan', 'Tony', '$2y$13$br91J2pFIHHPkWfjDX7H9ek4nOiA7TOcmmwbA5HfIDrCsRZPyWluq', 'kbode@greenfelder.biz', '1-819-412-6232 x1246', 'Admin'),
+(226, 'Windler', 'Gerald', '$2y$13$WtLDhVzZuq4T5UvkoFuAXuBzvxSCMVR89pnruaR5stwVigXccpxHi', 'reinger.darwin@hotmail.com', '404-256-5169', 'Admin'),
+(227, 'Smitham', 'Kirk', '$2y$13$7VQOxgiHBLuW6eb/Qci8suG.K42gtqJ9q5wO/uGwGqIgqxyxNmj/C', 'teagan.schinner@mitchell.com', '(561) 679-0585', 'Admin'),
+(228, 'Miller', 'Franz', '$2y$13$4qz0C1/A1OzChjnqkvbOgOlK0YtQO6R/Umi01EFuHAYcGqVg5mV2q', 'kfritsch@hotmail.com', '(496) 819-6466 x295', 'Admin'),
+(229, 'Bailey', 'Stacey', '$2y$13$TYxGaJrkXt92fv5xGJ2gpO4AsBu3OQXFi8dBN3qyte17yUOOJ0Gly', 'jjakubowski@weissnat.com', '1-952-553-4922 x142', 'Admin'),
+(230, 'Dach', 'Jerrod', '$2y$13$qXDzwuqOWH7H7kfE.7KhTu7fdC0uftVRDJMhyfkqooMHSWXeWIOeW', 'gvonrueden@gmail.com', '1-634-299-9816 x805', 'Admin');
 
 -- --------------------------------------------------------
 
@@ -97,7 +97,6 @@ CREATE TABLE `classe` (
   `nom` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `filiere` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `promotion` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `emploi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `administrateur_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -105,17 +104,37 @@ CREATE TABLE `classe` (
 -- Déchargement des données de la table `classe`
 --
 
-INSERT INTO `classe` (`id`, `nom`, `filiere`, `promotion`, `emploi`, `administrateur_id`) VALUES
-(121, '5ILDW', 'EI', '2019-2020', 'emploi_0', 126),
-(122, '5ILDW', 'EI', '2019-2020', 'emploi_1', 129),
-(123, '5ILDW', 'EI', '2019-2020', 'emploi_2', 128),
-(124, '5ILDW', 'EI', '2019-2020', 'emploi_3', 130),
-(125, '5ILDW', 'EI', '2019-2020', 'emploi_4', 130),
-(126, '5ILDW', 'EI', '2019-2020', 'emploi_5', 123),
-(127, '5ILDW', 'EI', '2019-2020', 'emploi_6', 126),
-(128, '5ILDW', 'EI', '2019-2020', 'emploi_7', 126),
-(129, '5ILDW', 'EI', '2019-2020', 'emploi_8', 127),
-(130, '5ILDW', 'EI', '2019-2020', 'emploi_9', 128);
+INSERT INTO `classe` (`id`, `nom`, `filiere`, `promotion`, `administrateur_id`) VALUES
+(221, '5ILDW', 'EI', '2019-2020', 230),
+(222, '5ILDW', 'EI', '2019-2020', 229),
+(223, '5ILDW', 'EI', '2019-2020', 227),
+(224, '5ILDW', 'EI', '2019-2020', 230),
+(225, '5ILDW', 'EI', '2019-2020', 225),
+(226, '5ILDW', 'EI', '2019-2020', 227),
+(227, '5ILDW', 'EI', '2019-2020', 221),
+(228, '5ILDW', 'EI', '2019-2020', 228),
+(229, '5ILDW', 'EI', '2019-2020', 226),
+(230, '5ILDW', 'EI', '2019-2020', 222);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `classe_image`
+--
+
+CREATE TABLE `classe_image` (
+  `classe_id` int(11) NOT NULL,
+  `image_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `classe_image`
+--
+
+INSERT INTO `classe_image` (`classe_id`, `image_id`) VALUES
+(222, 14),
+(222, 15),
+(223, 14);
 
 -- --------------------------------------------------------
 
@@ -127,7 +146,7 @@ CREATE TABLE `etudiant` (
   `id` int(11) NOT NULL,
   `nom` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `prenom` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `code_etd` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tel` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -141,16 +160,16 @@ CREATE TABLE `etudiant` (
 --
 
 INSERT INTO `etudiant` (`id`, `nom`, `prenom`, `password`, `email`, `code_etd`, `tel`, `administrateur_id`, `classe_id`, `role`) VALUES
-(63, 'nom_etudiant_0', 'prenom_etudiant_0', 'dCZPDUzfTw0SpSSQgCY3', 'etudiant0@isga.ma', 'E1110', '0666666666', 126, 122, 'Etudiant'),
-(64, 'nom_etudiant_1', 'prenom_etudiant_1', 'dCZPDUzfTw0SpSSQgCY3', 'etudiant1@isga.ma', 'E1111', '0666666666', 124, 124, 'Etudiant'),
-(65, 'nom_etudiant_2', 'prenom_etudiant_2', 'dCZPDUzfTw0SpSSQgCY3', 'etudiant2@isga.ma', 'E1112', '0666666666', 129, 124, 'Etudiant'),
-(66, 'nom_etudiant_3', 'prenom_etudiant_3', 'dCZPDUzfTw0SpSSQgCY3', 'etudiant3@isga.ma', 'E1113', '0666666666', 128, 126, 'Etudiant'),
-(67, 'nom_etudiant_4', 'prenom_etudiant_4', 'dCZPDUzfTw0SpSSQgCY3', 'etudiant4@isga.ma', 'E1114', '0666666666', 130, 121, 'Etudiant'),
-(68, 'nom_etudiant_5', 'prenom_etudiant_5', 'dCZPDUzfTw0SpSSQgCY3', 'etudiant5@isga.ma', 'E1115', '0666666666', 124, 127, 'Etudiant'),
-(69, 'nom_etudiant_6', 'prenom_etudiant_6', 'dCZPDUzfTw0SpSSQgCY3', 'etudiant6@isga.ma', 'E1116', '0666666666', 130, 130, 'Etudiant'),
-(70, 'nom_etudiant_7', 'prenom_etudiant_7', 'dCZPDUzfTw0SpSSQgCY3', 'etudiant7@isga.ma', 'E1117', '0666666666', 124, 124, 'Etudiant'),
-(71, 'nom_etudiant_8', 'prenom_etudiant_8', 'dCZPDUzfTw0SpSSQgCY3', 'etudiant8@isga.ma', 'E1118', '0666666666', 130, 123, 'Etudiant'),
-(72, 'nom_etudiant_9', 'prenom_etudiant_9', 'dCZPDUzfTw0SpSSQgCY3', 'etudiant9@isga.ma', 'E1119', '0666666666', 130, 125, 'Etudiant');
+(153, 'Hartmann', 'Lue', '$2y$13$nlsgleb2Mv3l0bdfuftYJeTOHLGYlezxk4nsLLNtqeJBXucTY4lF.', 'jbergstrom@yahoo.com', '78693401', '1-281-831-8451', 223, 224, 'Etudiant'),
+(154, 'Cole', 'Reuben', '$2y$13$MhzARQeVw84zoltIc7vxpup1JnTP.ncKb9sQHIKxvmDBD5rx1uB8u', 'manley.beatty@mcdermott.com', '75476854', '+1-374-331-1765', 226, 224, 'Etudiant'),
+(155, 'Shields', 'Keegan', '$2y$13$70AVk.qBI.jlFv9n1Lb59eZCdpebXgYG5jfBvg2vPQ0MkYKwkw7Ui', 'hoeger.alexie@rippin.com', '12609123', '+1.317.213.0017', 224, 228, 'Etudiant'),
+(156, 'Heller', 'Randi', '$2y$13$FqRWn2LmfhpJ.7YXpcWlROkre3.AMXD6qGFAeF7VWvIP81mSwfTN6', 'tillman.chaya@gmail.com', '58852750', '+1-570-318-2190', 224, 227, 'Etudiant'),
+(157, 'Dibbert', 'Lea', '$2y$13$vLM4xZydI.jSxw92Znk4ruPM2TqPBr2h.pACuht2aADLUu/gLiZdS', 'qkeeling@borer.org', '89177150', '464.223.8248 x0352', 227, 225, 'Etudiant'),
+(158, 'Heaney', 'Darby', '$2y$13$pRKpmyDFVmrQndukkMOqouyuO7A.3xSrCXUhI2Fxpg8DF.4MwepiG', 'pouros.alana@corwin.com', '52067464', '+1 (280) 283-8223', 230, 225, 'Etudiant'),
+(159, 'Rolfson', 'Maxine', '$2y$13$qMtWCcnSdLZZM8.c0BL1F.d2AFVe/ekKfTKV0LddUHIIMf5ZfvJyG', 'ykunde@goodwin.net', '78246157', '708.842.8252', 229, 223, 'Etudiant'),
+(160, 'Gleason', 'Johann', '$2y$13$jZaqFYisjyfzw2UjIxLLRuBCoiCoFjJTimr1fVAYzz035m/kdIxNi', 'yhills@yahoo.com', '16877443', '(660) 496-7764', 221, 227, 'Etudiant'),
+(161, 'Beatty', 'Arlo', '$2y$13$ISTDPCA4ZZi9eM80BtO/rekPG9lC8vbpaUBRPhLH1Cn3dRMGIDIJ6', 'squigley@gmail.com', '16469433', '(785) 591-5186', 222, 228, 'Etudiant'),
+(162, 'Gleason', 'Verner', '$2y$13$oebXM9VG.debEUH3jytmz.aniZ7Qwc2e0OtEsFzY10SzDtT12cm5y', 'sdubuque@zieme.com', '73151012', '1-315-466-3333 x6043', 230, 228, 'Etudiant');
 
 -- --------------------------------------------------------
 
@@ -174,16 +193,37 @@ CREATE TABLE `exam` (
 --
 
 INSERT INTO `exam` (`id`, `date`, `note`, `validation`, `matiere_id`, `administrateur_id`, `etudiant_id`, `nom`) VALUES
-(61, '2019-12-21 01:26:34', 6, 1, 71, 129, 64, 'DM0'),
-(62, '2019-12-21 01:26:34', 11, 1, 63, 124, 63, 'DM1'),
-(63, '2019-12-21 01:26:34', 13, 1, 66, 130, 67, 'DM2'),
-(64, '2019-12-21 01:26:34', 6, 1, 65, 127, 68, 'DM3'),
-(65, '2019-12-21 01:26:34', 19, 1, 67, 121, 65, 'DM4'),
-(66, '2019-12-21 01:26:34', 19, 1, 63, 126, 67, 'DM5'),
-(67, '2019-12-21 01:26:34', 9, 1, 68, 129, 71, 'DM6'),
-(68, '2019-12-21 01:26:34', 14, 1, 69, 121, 67, 'DM7'),
-(69, '2019-12-21 01:26:34', 5, 1, 62, 130, 72, 'DM8'),
-(70, '2019-12-21 01:26:34', 8, 1, 66, 124, 65, 'DM9');
+(151, '2020-01-10 19:06:05', 13, 1, 167, 226, 160, 'DM0'),
+(152, '2020-01-10 19:06:05', 12, 1, 164, 227, 160, 'DM1'),
+(153, '2020-01-10 19:06:05', 12, 1, 163, 226, 159, 'DM2'),
+(154, '2020-01-10 19:06:05', 17, 1, 166, 228, 155, 'DM3'),
+(155, '2020-01-10 19:06:05', 20, 0, 171, 222, 158, 'DM4'),
+(156, '2020-01-10 19:06:05', 16, 0, 162, 222, 161, 'DM5'),
+(157, '2020-01-10 19:06:05', 13, 0, 167, 226, 159, 'DM6'),
+(158, '2020-01-10 19:06:05', 20, 1, 165, 226, 162, 'DM7'),
+(159, '2020-01-10 19:06:05', 20, 1, 163, 225, 156, 'DM8'),
+(160, '2020-01-10 19:06:05', 10, 0, 166, 223, 161, 'DM9');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `image`
+--
+
+CREATE TABLE `image` (
+  `id` int(11) NOT NULL,
+  `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `alt` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `image`
+--
+
+INSERT INTO `image` (`id`, `url`, `alt`) VALUES
+(14, '5e18beebc87f3282936466.jpg', '3isi'),
+(15, '5e18bf07bbae3506277181.png', '4isi'),
+(16, '5e18bf203d370724421564.jpg', '5ildw');
 
 -- --------------------------------------------------------
 
@@ -206,16 +246,16 @@ CREATE TABLE `matiere` (
 --
 
 INSERT INTO `matiere` (`id`, `nom`, `nbr_heure`, `salle`, `date`, `classe_id`, `administrateur_id`) VALUES
-(62, 'Matiere_0', 28, '1A', '2019-12-21 01:26:34', 128, 123),
-(63, 'Matiere_1', 28, '1A', '2019-12-21 01:26:34', 123, 125),
-(64, 'Matiere_2', 28, '1A', '2019-12-21 01:26:34', 127, 123),
-(65, 'Matiere_3', 28, '1A', '2019-12-21 01:26:34', 127, 130),
-(66, 'Matiere_4', 28, '1A', '2019-12-21 01:26:34', 128, 130),
-(67, 'Matiere_5', 28, '1A', '2019-12-21 01:26:34', 122, 127),
-(68, 'Matiere_6', 28, '1A', '2019-12-21 01:26:34', 130, 130),
-(69, 'Matiere_7', 28, '1A', '2019-12-21 01:26:34', 130, 123),
-(70, 'Matiere_8', 28, '1A', '2019-12-21 01:26:34', 129, 122),
-(71, 'Matiere_9', 28, '1A', '2019-12-21 01:26:34', 130, 128);
+(162, 'Matiere_0', 28, '1A', '2020-01-10 19:05:42', 230, 224),
+(163, 'Matiere_1', 28, '1A', '2020-01-10 19:05:42', 221, 229),
+(164, 'Matiere_2', 28, '1A', '2020-01-10 19:05:42', 230, 227),
+(165, 'Matiere_3', 28, '1A', '2020-01-10 19:05:42', 228, 224),
+(166, 'Matiere_4', 28, '1A', '2020-01-10 19:05:42', 227, 230),
+(167, 'Matiere_5', 28, '1A', '2020-01-10 19:05:42', 222, 229),
+(168, 'Matiere_6', 28, '1A', '2020-01-10 19:05:42', 223, 223),
+(169, 'Matiere_7', 28, '1A', '2020-01-10 19:05:42', 222, 224),
+(170, 'Matiere_8', 28, '1A', '2020-01-10 19:05:42', 226, 222),
+(171, 'Matiere_9', 28, '1A', '2020-01-10 19:05:42', 225, 226);
 
 -- --------------------------------------------------------
 
@@ -237,7 +277,64 @@ INSERT INTO `migration_versions` (`version`, `executed_at`) VALUES
 ('20191210003338', '2019-12-10 00:33:53'),
 ('20191210004533', '2019-12-10 00:50:33'),
 ('20191212170557', '2019-12-12 17:07:04'),
-('20191212174525', '2019-12-12 17:46:25');
+('20191212174525', '2019-12-12 17:46:25'),
+('20200108181558', '2020-01-08 18:16:27'),
+('20200108183606', '2020-01-08 18:36:20'),
+('20200110173512', '2020-01-10 17:36:54');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `question`
+--
+
+CREATE TABLE `question` (
+  `id` int(11) NOT NULL,
+  `quiz_id` int(11) NOT NULL,
+  `ques` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `rep` tinyint(1) NOT NULL,
+  `justification` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `question`
+--
+
+INSERT INTO `question` (`id`, `quiz_id`, `ques`, `rep`, `justification`) VALUES
+(21, 11, 'Question #0', 0, 'Quam voluptates similique iste nulla magni temporibus.'),
+(22, 12, 'Question #1', 0, 'Ut a tempora consequatur eos id aut.'),
+(23, 12, 'Question #2', 0, 'In velit hic consequuntur velit vitae.'),
+(24, 11, 'Question #3', 1, 'Quo dolor quo animi voluptates suscipit eos at.'),
+(25, 14, 'Question #4', 1, 'Possimus ipsam dolores cumque hic.'),
+(26, 13, 'Question #5', 1, 'Sint exercitationem sint aliquam nulla fugiat ipsum.'),
+(27, 12, 'Question #6', 0, 'Beatae rerum voluptas accusamus at qui nihil explicabo excepturi.'),
+(28, 12, 'Question #7', 0, 'Unde praesentium dolore officia temporibus quae perferendis.'),
+(29, 14, 'Question #8', 1, 'Qui dolore voluptatum sapiente aut suscipit ut voluptate ea.'),
+(30, 13, 'Question #9', 0, 'Perspiciatis possimus aut et quos et delectus.');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `quiz`
+--
+
+CREATE TABLE `quiz` (
+  `id` int(11) NOT NULL,
+  `titre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `filiere` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `niveau` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `quiz`
+--
+
+INSERT INTO `quiz` (`id`, `titre`, `filiere`, `niveau`) VALUES
+(11, 'Quiz #0', 'EI', 'isi'),
+(12, 'Quiz #1', 'EI', 'isi'),
+(13, 'Quiz #2', 'EI', 'isi'),
+(14, 'Quiz #3', 'EI', 'isi'),
+(15, 'Quiz #4', 'EI', 'isi');
 
 -- --------------------------------------------------------
 
@@ -282,6 +379,14 @@ ALTER TABLE `classe`
   ADD KEY `IDX_8F87BF967EE5403C` (`administrateur_id`);
 
 --
+-- Index pour la table `classe_image`
+--
+ALTER TABLE `classe_image`
+  ADD PRIMARY KEY (`classe_id`,`image_id`),
+  ADD KEY `IDX_8C4A50678F5EA509` (`classe_id`),
+  ADD KEY `IDX_8C4A50673DA5256D` (`image_id`);
+
+--
 -- Index pour la table `etudiant`
 --
 ALTER TABLE `etudiant`
@@ -299,6 +404,12 @@ ALTER TABLE `exam`
   ADD KEY `IDX_38BBA6C6DDEAB1A3` (`etudiant_id`);
 
 --
+-- Index pour la table `image`
+--
+ALTER TABLE `image`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `matiere`
 --
 ALTER TABLE `matiere`
@@ -311,6 +422,19 @@ ALTER TABLE `matiere`
 --
 ALTER TABLE `migration_versions`
   ADD PRIMARY KEY (`version`);
+
+--
+-- Index pour la table `question`
+--
+ALTER TABLE `question`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_B6F7494E853CD175` (`quiz_id`);
+
+--
+-- Index pour la table `quiz`
+--
+ALTER TABLE `quiz`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `user`
@@ -326,37 +450,55 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `absence`
 --
 ALTER TABLE `absence`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
 
 --
 -- AUTO_INCREMENT pour la table `administrateur`
 --
 ALTER TABLE `administrateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=231;
 
 --
 -- AUTO_INCREMENT pour la table `classe`
 --
 ALTER TABLE `classe`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=231;
 
 --
 -- AUTO_INCREMENT pour la table `etudiant`
 --
 ALTER TABLE `etudiant`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
 
 --
 -- AUTO_INCREMENT pour la table `exam`
 --
 ALTER TABLE `exam`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
+
+--
+-- AUTO_INCREMENT pour la table `image`
+--
+ALTER TABLE `image`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT pour la table `matiere`
 --
 ALTER TABLE `matiere`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
+
+--
+-- AUTO_INCREMENT pour la table `question`
+--
+ALTER TABLE `question`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT pour la table `quiz`
+--
+ALTER TABLE `quiz`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT pour la table `user`
@@ -383,6 +525,13 @@ ALTER TABLE `classe`
   ADD CONSTRAINT `FK_8F87BF967EE5403C` FOREIGN KEY (`administrateur_id`) REFERENCES `administrateur` (`id`);
 
 --
+-- Contraintes pour la table `classe_image`
+--
+ALTER TABLE `classe_image`
+  ADD CONSTRAINT `FK_8C4A50673DA5256D` FOREIGN KEY (`image_id`) REFERENCES `image` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_8C4A50678F5EA509` FOREIGN KEY (`classe_id`) REFERENCES `classe` (`id`) ON DELETE CASCADE;
+
+--
 -- Contraintes pour la table `etudiant`
 --
 ALTER TABLE `etudiant`
@@ -403,6 +552,12 @@ ALTER TABLE `exam`
 ALTER TABLE `matiere`
   ADD CONSTRAINT `FK_9014574A7EE5403C` FOREIGN KEY (`administrateur_id`) REFERENCES `administrateur` (`id`),
   ADD CONSTRAINT `FK_9014574A8F5EA509` FOREIGN KEY (`classe_id`) REFERENCES `classe` (`id`);
+
+--
+-- Contraintes pour la table `question`
+--
+ALTER TABLE `question`
+  ADD CONSTRAINT `FK_B6F7494E853CD175` FOREIGN KEY (`quiz_id`) REFERENCES `quiz` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

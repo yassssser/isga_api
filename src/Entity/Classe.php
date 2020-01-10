@@ -12,6 +12,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource(
  *  itemOperations={
+ *      "PUT",
  *      "GET"={
  *        "normalization_context"={
  *          "groups"={"get-classe-with-etd"}
@@ -49,11 +50,6 @@ class Classe
      */
     private $promotion;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Groups({"get-classe-with-etd"})
-     */
-    private $emploi;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Etudiant", mappedBy="classe" , orphanRemoval=true)
@@ -75,10 +71,20 @@ class Classe
      */
     private $administrateur;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Image")
+     * @ORM\JoinTable()
+     * @ApiSubresource()
+     * @Groups({"get-classe-with-etd"})
+     */
+    private $images;
+
+
     public function __construct()
     {
         $this->etudiants = new ArrayCollection();
         $this->matieres = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -118,18 +124,6 @@ class Classe
     public function setPromotion(string $promotion): self
     {
         $this->promotion = $promotion;
-
-        return $this;
-    }
-
-    public function getEmploi(): ?string
-    {
-        return $this->emploi;
-    }
-
-    public function setEmploi(string $emploi): self
-    {
-        $this->emploi = $emploi;
 
         return $this;
     }
@@ -208,6 +202,32 @@ class Classe
             if ($matiere->getClasse() === $this) {
                 $matiere->setClasse(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Image[]
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Image $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Image $image): self
+    {
+        if ($this->images->contains($image)) {
+            $this->images->removeElement($image);
         }
 
         return $this;

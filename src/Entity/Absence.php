@@ -22,7 +22,7 @@ class Absence
     private $id;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      * @Groups({"get-etd-with-exam"})
      */
     private $date;
@@ -37,7 +37,7 @@ class Absence
      * @ORM\Column(type="float")
      * @Groups({"get-etd-with-exam"})
      */
-    private $nbr_heure;
+    private $nbrHeure;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Etudiant", inversedBy="absences")
@@ -86,12 +86,12 @@ class Absence
 
     public function getNbrHeure(): ?float
     {
-        return $this->nbr_heure;
+        return $this->nbrHeure;
     }
 
-    public function setNbrHeure(float $nbr_heure): self
+    public function setNbrHeure(float $nbrHeure): self
     {
-        $this->nbr_heure = $nbr_heure;
+        $this->nbrHeure = $nbrHeure;
 
         return $this;
     }

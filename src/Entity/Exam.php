@@ -57,7 +57,8 @@ class Exam
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Matiere", inversedBy="exams")
-     * @Groups({"get-matiere-with-exam"})
+     * @Groups({"get-matiere-with-exam" , "get-etd-with-exam"})
+     * 
      */
     private $matiere;
 

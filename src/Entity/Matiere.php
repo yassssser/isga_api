@@ -11,7 +11,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\MatiereRepository")
  */
 class Matiere
@@ -20,10 +21,10 @@ class Matiere
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"get-classe-with-etd", "get-matiere-with-exam" , "get-etd-with-exam"})
+     * @Groups({"get-classe-with-etd" , "get-etd-with-exam"})
      */
     private $id;
-
+ 
     /**
      * @ORM\Column(type="string", length=20)
      * @Groups({"get-classe-with-etd" ,"get-matiere-with-exam", "get-etd-with-exam" })

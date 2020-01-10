@@ -8,6 +8,8 @@ use App\Entity\Classe;
 use App\Entity\Etudiant;
 use App\Entity\Exam;
 use App\Entity\Matiere;
+use App\Entity\Question;
+use App\Entity\Quiz;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker\Factory;
@@ -35,6 +37,8 @@ class AppFixtures extends Fixture
         $this->loadEtudiant($manager);
         $this->loadExam($manager);
         $this->loadAbsence($manager);
+        $this->loadQuiz($manager);
+        $this->loadQuestion($manager);
 
         $manager->flush();
     }
@@ -62,7 +66,6 @@ class AppFixtures extends Fixture
             $classe->setNom("5ILDW");
             $classe->setPromotion("2019-2020");
             $classe->setFiliere("EI");
-            $classe->setEmploi("emploi_$i");
 
             $admin = $this->getReference("admin_".rand(0,9));
             $classe->setAdministrateur($admin);
@@ -155,6 +158,37 @@ class AppFixtures extends Fixture
             $abs->setEtudiant($etd);
 
             $manager->persist($abs);
+        }
+        $manager->flush();
+    }
+
+    public function loadQuiz(ObjectManager $manager){
+        for($i=0 ; $i<5 ; $i++){
+            $qz = new Quiz();
+
+            $qz->setTitre("Quiz #$i" );
+            $qz->setFiliere("EI");
+            $qz->setNiveau("isi");
+
+            $this->addReference("qz_$i", $qz);
+
+            $manager->persist($qz);
+        }
+        $manager->flush();
+    }
+
+    public function loadQuestion(ObjectManager $manager){
+        for($i=0 ; $i<10 ; $i++){
+            $qs = new Question();
+
+            $qs->setQues("Question #$i");
+            $qs->setRep($this->faker->boolean);
+            $qs->setJustification($this->faker->sentence($nbWords = 6, $variableNbWords = true));
+
+            $qz = $this->getReference("qz_".rand(0,4));
+            $qs->setQuiz($qz);
+
+            $manager->persist($qs);
         }
         $manager->flush();
     }

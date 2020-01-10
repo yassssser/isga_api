@@ -1,11 +1,24 @@
 easy_admin:
     entities:
-#        # List the entity class name you want to manage
-        - App\Entity\Etudiant
-        - App\Entity\Administrateur
-        - App\Entity\Classe
-        - App\Entity\Absence
-        - App\Entity\Exam
-        - App\Entity\Matiere
-#        - App\Entity\Category
-#        - App\Entity\User
+        Etudiant:
+            class: App\Entity\Etudiant
+        Administrateur:
+            class: App\Entity\Administrateur
+        Classe:
+            class: App\Entity\Classe
+        Absence:
+            class: App\Entity\Absence
+        Exam:
+            class: App\Entity\Exam
+        Matiere:
+            class: App\Entity\Matiere
+        Image:
+            class: App\Entity\Image
+            list:
+                fields:
+                    - id
+                    - { property: 'url', type: 'image', label: 'Image' }
+            form:
+                fields:
+                    - { property: 'file', type: 'Vich\UploaderBundle\Form\Type\VichFileType' }
+

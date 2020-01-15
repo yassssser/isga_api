@@ -9,10 +9,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  * @ApiResource(
  * itemOperations={
+ *      "PUT",
  *      "GET"={
  *        "normalization_context"={
  *          "groups"={"get-etd-with-exam"}
@@ -22,6 +25,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\EtudiantRepository")
+ * @UniqueEntity("email")
  */
 class Etudiant implements UserInterface
 {
@@ -81,10 +85,10 @@ class Etudiant implements UserInterface
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Classe", inversedBy="etudiants")
-     * 
+     * @Groups({"get-etd-with-exam" })
      */
     private $classe;
-
+ 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Absence", mappedBy="etudiant" , orphanRemoval=true)
      *  @ApiSubresource()

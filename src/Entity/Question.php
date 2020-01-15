@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource()
@@ -15,24 +16,28 @@ class Question
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"get-qst-with-quiz"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"get-qst-with-quiz"})
      */
     private $ques;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"get-qst-with-quiz"})
      */
     private $rep;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"get-qst-with-quiz"})
      */
     private $justification;
-
+ 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Quiz", inversedBy="questions")
      * @ORM\JoinColumn(nullable=false)

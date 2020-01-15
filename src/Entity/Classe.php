@@ -28,25 +28,25 @@ class Classe
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"get-classe-with-etd"})
+     * @Groups({"get-classe-with-etd" , "get-etd-with-exam"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=10)
-     * @Groups({"get-classe-with-etd"})
+     * @Groups({"get-classe-with-etd" , "get-etd-with-exam"})
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=20)
-     * @Groups({"get-classe-with-etd"})
+     * @Groups({"get-classe-with-etd" , "get-etd-with-exam"})
      */
     private $filiere;
 
     /**
      * @ORM\Column(type="string", length=30)
-     * @Groups({"get-classe-with-etd"})
+     * @Groups({"get-classe-with-etd" , "get-etd-with-exam"})
      */
     private $promotion;
 
@@ -60,7 +60,7 @@ class Classe
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Matiere", mappedBy="classe" , orphanRemoval=true)
-     * @Groups({"get-classe-with-etd"})
+     * @Groups({"get-classe-with-etd" , "get-etd-with-exam"})
      * @ApiSubresource()
      */
     private $matieres;
@@ -75,7 +75,7 @@ class Classe
      * @ORM\ManyToMany(targetEntity="App\Entity\Image")
      * @ORM\JoinTable()
      * @ApiSubresource()
-     * @Groups({"get-classe-with-etd"})
+     * @Groups({"get-classe-with-etd" , "get-etd-with-exam"})
      */
     private $images;
 

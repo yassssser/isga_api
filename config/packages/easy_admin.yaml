@@ -18,7 +18,12 @@ easy_admin:
                 fields:
                     - id
                     - { property: 'url', type: 'image', label: 'Image' }
+                    - alt
             form:
                 fields:
                     - { property: 'file', type: 'Vich\UploaderBundle\Form\Type\VichFileType' }
+        Quiz:
+            class: App\Entity\Quiz
+        Question:
+            class: App\Entity\Question
 

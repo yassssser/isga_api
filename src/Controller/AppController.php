@@ -6,8 +6,11 @@ use App\Entity\Absence;
 use App\Entity\Classe;
 use App\Entity\Etudiant;
 use App\Entity\Image;
+use App\Entity\Question;
+use App\Entity\Quiz;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+
 
 class AppController extends AbstractController
 {
@@ -94,5 +97,20 @@ class AppController extends AbstractController
         
         return $this->json($classe);
     }
+
+
+/**
+* @Route("/getquestion/{fl}/{nv}", name="getquiz" , methods={"GET"})
+*/
+public function getquiz($fl,$nv)
+{
+    $repositoryQz = $this->getDoctrine()->getRepository(Quiz::class);
+    $quiz = $repositoryQz->findOneBy(['filiere' => $fl, 'niveau' => $nv]);
+
+    $repository = $this->getDoctrine()->getRepository(Question::class);
+    $absence = $repository->findBy(['Quiz' => $quiz ]);
+
+    return $this->json($absence);
+}
     
 }

@@ -31,12 +31,12 @@ class AppFixtures extends Fixture
         // $product = new Product();
         // $manager->persist($product);
 
-        $this->loadAdministrateur($manager);
-        $this->loadClasse($manager);
-        $this->loadMatiere($manager);
-        $this->loadEtudiant($manager);
-        $this->loadExam($manager);
-        $this->loadAbsence($manager);
+//        $this->loadAdministrateur($manager);
+//        $this->loadClasse($manager);
+//        $this->loadMatiere($manager);
+//        $this->loadEtudiant($manager);
+//        $this->loadExam($manager);
+//        $this->loadAbsence($manager);
         $this->loadQuiz($manager);
         $this->loadQuestion($manager);
 

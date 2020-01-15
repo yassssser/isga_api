@@ -35,7 +35,7 @@ class Image
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"get-classe-with-etd"})
+     * @Groups({"get-classe-with-etd" , "get-etd-with-exam"})
      */
     private $id;
 
@@ -47,7 +47,7 @@ class Image
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"get-classe-with-etd"})
+     * @Groups({"get-classe-with-etd" , "get-etd-with-exam"})
      * 
      */
     private $url;
@@ -56,7 +56,7 @@ class Image
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"get-classe-with-etd"})
+     * @Groups({"get-classe-with-etd" , "get-etd-with-exam"})
      */
     private $alt;
 

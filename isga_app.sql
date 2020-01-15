@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  ven. 10 jan. 2020 à 20:47
+-- Généré le :  lun. 13 jan. 2020 à 15:34
 -- Version du serveur :  10.1.36-MariaDB
 -- Version de PHP :  7.2.10
 
@@ -45,7 +45,6 @@ CREATE TABLE `absence` (
 INSERT INTO `absence` (`id`, `date`, `justification`, `nbr_heure`, `etudiant_id`, `matiere_id`, `administrateur_id`) VALUES
 (142, '2020-01-10', 1, 5, 154, 164, 221),
 (143, '2020-01-10', 1, 9, 154, 169, 221),
-(144, '2020-01-10', 0, 4, 157, 162, 221),
 (145, '2020-01-10', 1, 17, 160, 171, 230),
 (146, '2020-01-10', 0, 13, 158, 168, 228),
 (147, '2020-01-10', 1, 6, 155, 169, 228),
@@ -105,16 +104,16 @@ CREATE TABLE `classe` (
 --
 
 INSERT INTO `classe` (`id`, `nom`, `filiere`, `promotion`, `administrateur_id`) VALUES
-(221, '5ILDW', 'EI', '2019-2020', 230),
-(222, '5ILDW', 'EI', '2019-2020', 229),
-(223, '5ILDW', 'EI', '2019-2020', 227),
-(224, '5ILDW', 'EI', '2019-2020', 230),
-(225, '5ILDW', 'EI', '2019-2020', 225),
-(226, '5ILDW', 'EI', '2019-2020', 227),
-(227, '5ILDW', 'EI', '2019-2020', 221),
-(228, '5ILDW', 'EI', '2019-2020', 228),
-(229, '5ILDW', 'EI', '2019-2020', 226),
-(230, '5ILDW', 'EI', '2019-2020', 222);
+(221, '5ILDW', 'ecole d\'ingénieur', '2019-2020', 230),
+(222, '4isi', 'ecole d\'ingénieur', '2019-2020', 229),
+(223, '4isa', 'ecole d\'ingénieur', '2019-2020', 227),
+(224, '3isa', 'ecole d\'ingénieur', '2019-2020', 230),
+(225, '2EI', 'ecole d\'ingénieur', '2019-2020', 225),
+(226, '1EM', 'ecole management', '2019-2020', 227),
+(227, '5ASSRI', 'ecole d\'ingénieur', '2019-2020', 221),
+(228, '3FC', 'ecole management', '2019-2020', 228),
+(229, '3MC', 'ecole management', '2019-2020', 226),
+(230, '4ACG', 'ecole management', '2019-2020', 222);
 
 -- --------------------------------------------------------
 
@@ -134,7 +133,8 @@ CREATE TABLE `classe_image` (
 INSERT INTO `classe_image` (`classe_id`, `image_id`) VALUES
 (222, 14),
 (222, 15),
-(223, 14);
+(223, 16),
+(225, 14);
 
 -- --------------------------------------------------------
 
@@ -164,10 +164,9 @@ INSERT INTO `etudiant` (`id`, `nom`, `prenom`, `password`, `email`, `code_etd`, 
 (154, 'Cole', 'Reuben', '$2y$13$MhzARQeVw84zoltIc7vxpup1JnTP.ncKb9sQHIKxvmDBD5rx1uB8u', 'manley.beatty@mcdermott.com', '75476854', '+1-374-331-1765', 226, 224, 'Etudiant'),
 (155, 'Shields', 'Keegan', '$2y$13$70AVk.qBI.jlFv9n1Lb59eZCdpebXgYG5jfBvg2vPQ0MkYKwkw7Ui', 'hoeger.alexie@rippin.com', '12609123', '+1.317.213.0017', 224, 228, 'Etudiant'),
 (156, 'Heller', 'Randi', '$2y$13$FqRWn2LmfhpJ.7YXpcWlROkre3.AMXD6qGFAeF7VWvIP81mSwfTN6', 'tillman.chaya@gmail.com', '58852750', '+1-570-318-2190', 224, 227, 'Etudiant'),
-(157, 'Dibbert', 'Lea', '$2y$13$vLM4xZydI.jSxw92Znk4ruPM2TqPBr2h.pACuht2aADLUu/gLiZdS', 'qkeeling@borer.org', '89177150', '464.223.8248 x0352', 227, 225, 'Etudiant'),
 (158, 'Heaney', 'Darby', '$2y$13$pRKpmyDFVmrQndukkMOqouyuO7A.3xSrCXUhI2Fxpg8DF.4MwepiG', 'pouros.alana@corwin.com', '52067464', '+1 (280) 283-8223', 230, 225, 'Etudiant'),
 (159, 'Rolfson', 'Maxine', '$2y$13$qMtWCcnSdLZZM8.c0BL1F.d2AFVe/ekKfTKV0LddUHIIMf5ZfvJyG', 'ykunde@goodwin.net', '78246157', '708.842.8252', 229, 223, 'Etudiant'),
-(160, 'Gleason', 'Johann', '$2y$13$jZaqFYisjyfzw2UjIxLLRuBCoiCoFjJTimr1fVAYzz035m/kdIxNi', 'yhills@yahoo.com', '16877443', '(660) 496-7764', 221, 227, 'Etudiant'),
+(160, 'Gleason', 'Johann', '$2y$13$qMtWCcnSdLZZM8.c0BL1F.d2AFVe/ekKfTKV0LddUHIIMf5ZfvJyG', 'yhills@yahoo.com', '16877443', '(660) 496-7764', 221, 227, 'Etudiant'),
 (161, 'Beatty', 'Arlo', '$2y$13$ISTDPCA4ZZi9eM80BtO/rekPG9lC8vbpaUBRPhLH1Cn3dRMGIDIJ6', 'squigley@gmail.com', '16469433', '(785) 591-5186', 222, 228, 'Etudiant'),
 (162, 'Gleason', 'Verner', '$2y$13$oebXM9VG.debEUH3jytmz.aniZ7Qwc2e0OtEsFzY10SzDtT12cm5y', 'sdubuque@zieme.com', '73151012', '1-315-466-3333 x6043', 230, 228, 'Etudiant');
 
@@ -193,16 +192,16 @@ CREATE TABLE `exam` (
 --
 
 INSERT INTO `exam` (`id`, `date`, `note`, `validation`, `matiere_id`, `administrateur_id`, `etudiant_id`, `nom`) VALUES
-(151, '2020-01-10 19:06:05', 13, 1, 167, 226, 160, 'DM0'),
-(152, '2020-01-10 19:06:05', 12, 1, 164, 227, 160, 'DM1'),
+(151, '2020-01-10 19:06:05', 13, 1, 167, 226, 160, 'DS1'),
+(152, '2020-01-10 19:06:05', 5, 0, 164, 227, 160, 'DM1'),
 (153, '2020-01-10 19:06:05', 12, 1, 163, 226, 159, 'DM2'),
-(154, '2020-01-10 19:06:05', 17, 1, 166, 228, 155, 'DM3'),
-(155, '2020-01-10 19:06:05', 20, 0, 171, 222, 158, 'DM4'),
-(156, '2020-01-10 19:06:05', 16, 0, 162, 222, 161, 'DM5'),
-(157, '2020-01-10 19:06:05', 13, 0, 167, 226, 159, 'DM6'),
-(158, '2020-01-10 19:06:05', 20, 1, 165, 226, 162, 'DM7'),
-(159, '2020-01-10 19:06:05', 20, 1, 163, 225, 156, 'DM8'),
-(160, '2020-01-10 19:06:05', 10, 0, 166, 223, 161, 'DM9');
+(154, '2020-01-10 19:06:05', 7, 0, 166, 228, 155, 'DS2'),
+(155, '2020-01-10 19:06:05', 20, 1, 171, 222, 158, 'exam de semestre'),
+(156, '2020-01-10 19:06:05', 16, 1, 162, 222, 161, 'DS1'),
+(157, '2020-01-10 19:06:05', 8, 0, 167, 226, 159, 'exam de semestre'),
+(158, '2020-01-10 19:06:05', 20, 1, 165, 226, 162, 'DM2'),
+(159, '2020-01-10 19:06:05', 20, 1, 163, 225, 156, 'DS1'),
+(160, '2020-01-10 19:06:05', 10, 1, 166, 223, 161, 'exam de semestre');
 
 -- --------------------------------------------------------
 
@@ -246,16 +245,16 @@ CREATE TABLE `matiere` (
 --
 
 INSERT INTO `matiere` (`id`, `nom`, `nbr_heure`, `salle`, `date`, `classe_id`, `administrateur_id`) VALUES
-(162, 'Matiere_0', 28, '1A', '2020-01-10 19:05:42', 230, 224),
-(163, 'Matiere_1', 28, '1A', '2020-01-10 19:05:42', 221, 229),
-(164, 'Matiere_2', 28, '1A', '2020-01-10 19:05:42', 230, 227),
-(165, 'Matiere_3', 28, '1A', '2020-01-10 19:05:42', 228, 224),
-(166, 'Matiere_4', 28, '1A', '2020-01-10 19:05:42', 227, 230),
-(167, 'Matiere_5', 28, '1A', '2020-01-10 19:05:42', 222, 229),
-(168, 'Matiere_6', 28, '1A', '2020-01-10 19:05:42', 223, 223),
-(169, 'Matiere_7', 28, '1A', '2020-01-10 19:05:42', 222, 224),
-(170, 'Matiere_8', 28, '1A', '2020-01-10 19:05:42', 226, 222),
-(171, 'Matiere_9', 28, '1A', '2020-01-10 19:05:42', 225, 226);
+(162, 'Droiy Social', 24, '1A', '2020-01-10 19:05:42', 230, 224),
+(163, 'Anglais', 28, '3B', '2020-01-10 19:05:42', 221, 229),
+(164, 'Intelligence Artific', 32, '1D', '2020-01-10 19:05:42', 230, 227),
+(165, 'Programmation Mobile', 32, '2B', '2020-01-10 19:05:42', 228, 224),
+(166, 'SOAML', 28, '4A', '2020-01-10 19:05:42', 227, 230),
+(167, 'Workflow', 28, '1A', '2020-01-10 19:05:42', 222, 229),
+(168, 'JEE', 24, '2C', '2020-01-10 19:05:42', 223, 223),
+(169, 'Cloud Computing', 28, '4B', '2020-01-10 19:05:42', 222, 224),
+(170, 'Big Data', 24, '2D', '2020-01-10 19:05:42', 226, 222),
+(171, 'Virtualisation', 28, '1B', '2020-01-10 19:05:42', 225, 226);
 
 -- --------------------------------------------------------
 
@@ -301,16 +300,16 @@ CREATE TABLE `question` (
 --
 
 INSERT INTO `question` (`id`, `quiz_id`, `ques`, `rep`, `justification`) VALUES
-(21, 11, 'Question #0', 0, 'Quam voluptates similique iste nulla magni temporibus.'),
-(22, 12, 'Question #1', 0, 'Ut a tempora consequatur eos id aut.'),
-(23, 12, 'Question #2', 0, 'In velit hic consequuntur velit vitae.'),
-(24, 11, 'Question #3', 1, 'Quo dolor quo animi voluptates suscipit eos at.'),
-(25, 14, 'Question #4', 1, 'Possimus ipsam dolores cumque hic.'),
-(26, 13, 'Question #5', 1, 'Sint exercitationem sint aliquam nulla fugiat ipsum.'),
-(27, 12, 'Question #6', 0, 'Beatae rerum voluptas accusamus at qui nihil explicabo excepturi.'),
-(28, 12, 'Question #7', 0, 'Unde praesentium dolore officia temporibus quae perferendis.'),
-(29, 14, 'Question #8', 1, 'Qui dolore voluptatum sapiente aut suscipit ut voluptate ea.'),
-(30, 13, 'Question #9', 0, 'Perspiciatis possimus aut et quos et delectus.');
+(21, 11, 'Question #1', 0, 'Quam voluptates similique iste nulla magni temporibus.'),
+(22, 12, 'Question #2', 0, 'Ut a tempora consequatur eos id aut.'),
+(23, 12, 'Question #3', 0, 'In velit hic consequuntur velit vitae.'),
+(24, 11, 'Question #4', 1, 'Quo dolor quo animi voluptates suscipit eos at.'),
+(25, 14, 'Question #5', 1, 'Possimus ipsam dolores cumque hic.'),
+(26, 13, 'Question #6', 1, 'Sint exercitationem sint aliquam nulla fugiat ipsum.'),
+(27, 12, 'Question #7', 0, 'Beatae rerum voluptas accusamus at qui nihil explicabo excepturi.'),
+(28, 12, 'Question #8', 0, 'Unde praesentium dolore officia temporibus quae perferendis.'),
+(29, 14, 'Question #9', 1, 'Qui dolore voluptatum sapiente aut suscipit ut voluptate ea.'),
+(30, 13, 'Question #10', 0, 'Perspiciatis possimus aut et quos et delectus.');
 
 -- --------------------------------------------------------
 
@@ -330,11 +329,11 @@ CREATE TABLE `quiz` (
 --
 
 INSERT INTO `quiz` (`id`, `titre`, `filiere`, `niveau`) VALUES
-(11, 'Quiz #0', 'EI', 'isi'),
-(12, 'Quiz #1', 'EI', 'isi'),
-(13, 'Quiz #2', 'EI', 'isi'),
-(14, 'Quiz #3', 'EI', 'isi'),
-(15, 'Quiz #4', 'EI', 'isi');
+(11, 'Quiz #1', 'EI', '4isi'),
+(12, 'Quiz #2', 'EI', '3isi'),
+(13, 'Quiz #3', 'EI', '5ildw'),
+(14, 'Quiz #4', 'EI', '5assri'),
+(15, 'Quiz #5', 'EI', '2ei');
 
 -- --------------------------------------------------------
 
